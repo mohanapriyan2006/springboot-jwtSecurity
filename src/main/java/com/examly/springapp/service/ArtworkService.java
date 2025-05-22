@@ -38,11 +38,7 @@ public class ArtworkService {
     public Artwork updateArtwork(Long id, Artwork artwork) {
         Optional<Artwork> existingArtwork = artworkRepository.findById(id);
         if (existingArtwork.isPresent()) {
-            Artwork updatedArtwork = existingArtwork.get();
-            updatedArtwork.setTitle(artwork.getTitle());
-            updatedArtwork.setDescription(artwork.getDescription());
-            updatedArtwork.setPrice(artwork.getPrice());
-            return artworkRepository.save(updatedArtwork);
+            return artworkRepository.save(artwork);
         } else {
             return null;
         }

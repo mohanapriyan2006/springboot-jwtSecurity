@@ -1,8 +1,12 @@
 package com.examly.springapp.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -53,6 +57,11 @@ public class SpringBootSecurityConfig {
         daoAuth.setPasswordEncoder(passwordEncoder());
 
         return daoAuth;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(){
+        return new ProviderManager(List.of(daoAuthentication()));
     }
 
     @Bean

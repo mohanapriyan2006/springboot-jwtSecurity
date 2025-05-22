@@ -39,13 +39,6 @@ public class Artwork {
     
     private String artist;
 
-    @ManyToOne
-    // @JoinColumn(name = "artist_id",nullable = false)
-    @JsonIgnore
-    private Artist artists;
-
-    @OneToMany(mappedBy = "artwork",cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Auction> auctions;
+    
 
 }

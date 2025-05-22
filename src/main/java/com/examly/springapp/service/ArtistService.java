@@ -33,11 +33,7 @@ public class ArtistService {
     public Artist updateArtist(Long id, Artist artist) {
         Optional<Artist> existingArtist = artistRepository.findById(id);
         if (existingArtist.isPresent()) {
-            Artist updatedArtist = existingArtist.get();
-            updatedArtist.setName(artist.getName());
-            updatedArtist.setBio(artist.getBio());
-            updatedArtist.setEmail(artist.getEmail());
-            return artistRepository.save(updatedArtist);
+            return artistRepository.save(artist);
         } else {
             return null;
         }

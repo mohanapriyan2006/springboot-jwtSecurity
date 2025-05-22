@@ -30,12 +30,7 @@ public class AuctionService {
     public Auction updateAuction(Long id, Auction auction) {
         Optional<Auction> existingAuction = auctionRepository.findById(id);
         if (existingAuction.isPresent()) {
-            Auction updatedAuction = existingAuction.get();
-            updatedAuction.setTitle(auction.getTitle());
-            updatedAuction.setStartDate(auction.getStartDate());
-            updatedAuction.setEndDate(auction.getEndDate());
-            updatedAuction.setStartingPrice(auction.getStartingPrice());
-            return auctionRepository.save(updatedAuction);
+            return auctionRepository.save(auction);
         } else {
             return null;
         }

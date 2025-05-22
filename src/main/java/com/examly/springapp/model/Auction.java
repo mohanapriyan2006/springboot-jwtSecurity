@@ -30,10 +30,6 @@ public class Auction {
     private Date endDate;
     private Double startingPrice;
 
-    @OneToOne
-    // @JoinColumn(name = "artwork_id",nullable = false)
-    @JsonIgnore
-    private Artwork artwork;
 
 
 }

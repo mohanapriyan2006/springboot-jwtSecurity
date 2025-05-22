@@ -30,16 +30,4 @@ public class Artist {
     private String bio;
     private String email;
 
-    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
-    // @JoinColumn
-    @JsonIgnore
-    private List<Artwork> artworks;
-
-    public Artist(Long id, String name, String bio, String email) {
-        this.id = id;
-        this.name = name;
-        this.bio = bio;
-        this.email = email;
-    }
-
 }
