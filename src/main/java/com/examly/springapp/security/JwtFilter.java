@@ -1,6 +1,8 @@
 package com.examly.springapp.security;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,9 +15,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.examly.springapp.service.CustomUserDetialService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -52,6 +56,13 @@ public class JwtFilter extends OncePerRequestFilter {
                 }
             }
         } catch (Exception e) {
+            Map<String,String> responseMap = new HashMap<>();
+            responseMap.put("Error", "Invalid Token ,so Access Denied !");
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonString =  objectMapper.writeValueAsString(responseMap);
+
+            response.getWriter().write(jsonString);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
