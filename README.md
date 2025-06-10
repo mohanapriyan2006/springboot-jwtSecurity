@@ -17,6 +17,19 @@ A robust backend authentication system built with **Spring Boot** and **JWT** th
 - **JPA / Hibernate**
 - **Lombok & Maven**
 
+
+## 💻 Preview
+- 1
+![image1](./screenshots/image1.png)
+- 2
+![image2](./screenshots/image2.png)
+- 3
+![image3](./screenshots/image3.png)
+- 4
+![image4](./screenshots/image4.png)
+- 5
+![image5](./screenshots/image5.png)
+
 ## 📌 How to Run
 
 ```bash
